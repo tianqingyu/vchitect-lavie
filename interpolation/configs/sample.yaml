@@ -26,7 +26,7 @@ args:
   enable_xformers_memory_efficient_attention: True
   num_sample: 1
 
-  additional_prompt: ", 4k."
+  additional_prompt: ", 2k."
   negative_prompt: "None"
   do_classifier_free_guidance: True
   use_ddim_sample_loop: True
