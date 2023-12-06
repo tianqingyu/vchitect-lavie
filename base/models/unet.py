@@ -592,6 +592,7 @@ if __name__ == '__main__':
     # from xformers.ops import MemoryEfficientAttentionFlashAttentionOp
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
 
     pretrained_model_path = "/mnt/petrelfs/maxin/work/pretrained/stable-diffusion-v1-4/" # p cluster
     unet = UNet3DConditionModel.from_pretrained_2d(pretrained_model_path, subfolder="unet").to(device)

@@ -187,7 +187,7 @@ def main(args):
 		print('sampling begins')
 		torch.set_grad_enabled(False)
 		device = "cuda" if torch.cuda.is_available() else "cpu"
-		# device = "cpu"
+		device = "cpu"
 		
 		sd_path = args.pretrained_path + "/stable-diffusion-v1-4"
 		ckpt_path = args.ckpt_path
