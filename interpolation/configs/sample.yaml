@@ -23,7 +23,7 @@ args:
   cfg_scale: 4.0
   run_time: 12
   use_compile: False
-  enable_xformers_memory_efficient_attention: True
+  enable_xformers_memory_efficient_attention: False
   num_sample: 1
 
   additional_prompt: ", 2k."
