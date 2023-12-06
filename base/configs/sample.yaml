@@ -6,8 +6,8 @@ pretrained_path: "../pretrained_models"
 # model config: 
 model: UNet
 video_length: 16
-# image_size: [320, 512]
-image_size: [512, 320]
+image_size: [320, 512]
+# image_size: [512, 320]
 
 # beta schedule
 beta_start: 0.0001
