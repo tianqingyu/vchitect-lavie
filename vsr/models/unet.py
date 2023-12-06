@@ -649,7 +649,6 @@ if __name__ == '__main__':
     import torch
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = "cpu"
     config_path = "./configs/unet_3d_config.json"
     # pretrained_model_path = "./pretrained_models/unet_diffusion_pytorch_model.bin"
     # unet = UNet3DVSRModel.from_pretrained_2d(config_path, pretrained_model_path).to(device)

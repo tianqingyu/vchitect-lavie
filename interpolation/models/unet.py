@@ -559,7 +559,6 @@ if __name__ == '__main__':
     import torch
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = "cpu"
 
     pretrained_model_path = "/nvme/maxin/work/large-dit-video/pretrained/stable-diffusion-v1-4/" # 43
     unet = UNet3DConditionModel.from_pretrained_2d(pretrained_model_path, subfolder="unet").to(device)

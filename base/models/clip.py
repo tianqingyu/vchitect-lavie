@@ -111,7 +111,6 @@ if __name__ == '__main__':
     import torch
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = "cpu"
 
     text_encoder = TextEmbedder(path='/mnt/petrelfs/maxin/work/pretrained/stable-diffusion-2-1-base',
                                 dropout_prob=0.00001).to(device)
