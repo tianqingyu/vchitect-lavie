@@ -188,7 +188,9 @@ def main(args):
 		torch.set_grad_enabled(False)
 		device = "cuda" if torch.cuda.is_available() else "cpu"
 		# device = "cpu"
-		
+
+		print(f'xforms = {is_xformers_available()}')
+
 		sd_path = args.pretrained_path + "/stable-diffusion-v1-4"
 		ckpt_path = args.ckpt_path
 		for ckpt in [ckpt_path]:
