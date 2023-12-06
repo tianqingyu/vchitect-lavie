@@ -7,7 +7,7 @@ args:
     - 3418
 
   fps_list:
-    - 12
+    - 24
   
   # model config: 
   model: TSR
