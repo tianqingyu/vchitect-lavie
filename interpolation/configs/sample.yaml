@@ -23,7 +23,7 @@ args:
   cfg_scale: 4.0
   run_time: 12
   use_compile: False
-  enable_xformers_memory_efficient_attention: False
+  enable_xformers_memory_efficient_attention: True
   num_sample: 1
 
   additional_prompt: ", 2k."
@@ -34,4 +34,4 @@ args:
   researve_frame: 3
   mask_type: "tsr"
   use_concat: True
-  copy_no_mask: True
+  copy_no_mask: False
