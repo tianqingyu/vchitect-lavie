@@ -34,4 +34,4 @@ args:
   researve_frame: 3
   mask_type: "tsr"
   use_concat: True
-  copy_no_mask: False
+  copy_no_mask: True
