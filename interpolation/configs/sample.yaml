@@ -1,8 +1,8 @@
 args:
-  input_folder: "/home/vantage/apps/vchitect-lavie/results/base/"
-  ckpt_path: "/home/vantage/apps/vchitect-lavie/pretrained_models/lavie_interpolation.pt"
-  pretrained_path: "/home/vantage/apps/vchitect-lavie/pretrained_models"
-  output_folder: "/home/vantage/apps/vchitect-lavie/results/interpolation/"
+  input_folder: "../results/base/"
+  ckpt_path: "../pretrained_models/lavie_interpolation.pt"
+  pretrained_path: "../pretrained_models"
+  output_folder: "../results/interpolation/"
   seed_list:
     - 3418
 
