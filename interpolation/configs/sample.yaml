@@ -2,7 +2,7 @@ args:
   input_folder: "../res/base/"
   ckpt_path: "../pretrained_models/lavie_interpolation.pt"
   pretrained_path: "../pretrained_models"
-  output_folder: "../res/interpolation/"
+  output_folder: "../results/interpolation/"
   seed_list:
     - 3418
 
