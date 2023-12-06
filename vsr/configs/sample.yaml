@@ -1,4 +1,4 @@
-ckpt_path: "../pretained_models/lavie_vsr.pt"
+ckpt_path: "../pretrained_models/lavie_vsr.pt"
 pretrained_path: "../pretrained_models"
 input_path: "../results/base"
 output_path: "../results/vsr"
