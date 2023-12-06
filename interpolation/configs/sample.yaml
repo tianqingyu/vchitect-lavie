@@ -12,8 +12,8 @@ args:
   # model config: 
   model: TSR
   num_frames: 61
-  num_sampling_steps: 50
   image_size:  [320, 512]
+  num_sampling_steps: 50
   vae: mse
   use_timecross_transformer: False
   frame_interval: 1
