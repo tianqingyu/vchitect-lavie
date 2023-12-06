@@ -1,4 +1,4 @@
-name: lavie
+name: seine
 channels:
   - pytorch
   - nvidia
