@@ -14,7 +14,7 @@ print('load model')
 # load image
 input_path = "../results/demo/1.png"
 low_image = Image.open(input_path).convert('RGB')
-low_image = low_image.resize((128, 128))
+low_image = low_image.resize((256, 256))
 print('load image')
 
 # gen
