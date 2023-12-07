@@ -13,9 +13,14 @@ pipe = pipe.to("cuda")
 pipe.enable_attention_slicing()
 print('load model')
 
+# load image
+input_path = "../results/demo/1.png"
+low_res_img = Image.open(input_path).convert("RGB")
+print('load image')
+
 # gen
 prompt = "a photo of an astronaut riding a horse on mars"
-up_image = pipe(prompt=prompt, class_labels=[]).images[0]
+up_image = pipe(prompt=prompt, image=low_res_img).images[0]
 print('upscale done!')
 
 # output
