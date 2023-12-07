@@ -20,7 +20,7 @@ print('load image')
 
 # gen
 prompt = "a photo of an astronaut riding a horse on mars"
-up_image = pipe(prompt=prompt, image=low_res_img).images[0]
+up_image = pipe(prompt=prompt, image=[low_res_img]).images[0]
 print('upscale done!')
 
 # output
