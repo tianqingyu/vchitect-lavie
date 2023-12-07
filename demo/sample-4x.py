@@ -9,7 +9,7 @@ print('start')
 
 # load model and scheduler
 pipe = StableDiffusionPipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
-pipe = pipe.to("cuda")
+pipe = pipe.to("cuda").enable_attention_slicing()
 print('load model')
 
 # load image
