@@ -2,8 +2,6 @@ import os
 import torch
 from diffusers import StableDiffusionUpscalePipeline
 from PIL import Image
-from einops import rearrange
-import torchvision
 
 print('start')
 
@@ -15,26 +13,15 @@ print('load model')
 
 # load image
 input_path = "../results/demo/1.png"
-vframes, aframes, info = torchvision.io.read_video(filename=input_path, pts_unit='sec', output_format='TCHW') # RGB
-vframes = vframes / 255.
-vframes = (vframes - 0.5) * 2 # T C H W [-1, 1]
-t, _, h, w = vframes.shape
-vframes = vframes.unsqueeze(dim=0) # 1 T C H W
-vframes = rearrange(vframes, 'b t c h w -> b c t h w').contiguous()  # 1 C T H W
-print('Input_shape:', vframes.shape)
+low_image = Image.open(input_path).convert('RGB')
 print('load image')
 
 # gen
-prompt = "a photo of an astronaut riding a horse on mars"
-generator = torch.Generator(device='cuda').manual_seed(10)
-up_image = pipe(
-  prompt,
-  image=vframes,
-  generator=generator,
-  num_inference_steps=50,
-  guidance_scale=5,
-  noise_level=50
-).images[0]
+up_image = pipe(prompt="a photo of an astronaut riding a horse on mars",
+                image=low_image,
+                num_inference_steps=50,
+                guidance_scale=5,
+                noise_level=50).images[0]
 print('upscale done!')
 
 # output
