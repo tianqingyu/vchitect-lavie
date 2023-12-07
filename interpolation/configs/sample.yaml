@@ -10,8 +10,8 @@ args:
     - 24
   
   # model speedup
-  use_compile: False
   use_fp16: True
+  use_compile: False
 
   # model config: 
   model: TSR

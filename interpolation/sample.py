@@ -178,6 +178,7 @@ def auto_inpainting_copy_no_mask(args, video_input, prompt, vae, text_encoder, d
 def main(args):
 
 	for seed in args.seed_list:
+		print(f'>>> seed = {seed}')
 
 		args.seed = seed
 		torch.manual_seed(args.seed)
