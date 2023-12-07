@@ -9,6 +9,7 @@ print('start')
 pipe = StableDiffusionUpscalePipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
 pipe = pipe.to("cuda")
 # pipe.enable_attention_slicing()
+pipe.set_use_memory_efficient_attention_xformers(True)
 print('load model')
 
 # load image
