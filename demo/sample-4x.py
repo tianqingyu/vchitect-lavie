@@ -13,13 +13,14 @@ pipe.set_use_memory_efficient_attention_xformers(True)
 print('load model')
 
 # load image
-input_path = "../results/demo/1.png"
-low_image = Image.open(input_path).convert('RGB')
+low_image1 = Image.open('../results/demo/1.png').convert('RGB')
+low_image2 = Image.open('../results/demo/2.png').convert('RGB')
+low_image3 = Image.open('../results/demo/3.png').convert('RGB')
 print('load image')
 
 # gen
 up_image = pipe(prompt="a photo of an astronaut riding a horse on mars",
-                image=[low_image],
+                image=[low_image1, low_image2, low_image3],
                 num_inference_steps=50,
                 guidance_scale=5,
                 noise_level=50).images[0]
