@@ -19,7 +19,7 @@ print('load image')
 
 # gen
 up_image = pipe(prompt="a photo of an astronaut riding a horse on mars",
-                image=low_image,
+                image=[low_image],
                 num_inference_steps=50,
                 guidance_scale=5,
                 noise_level=50).images[0]
