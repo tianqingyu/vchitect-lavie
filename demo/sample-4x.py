@@ -15,15 +15,14 @@ print('load model')
 # load image
 input_path = "../results/demo/1.png"
 low_image = Image.open(input_path).convert('RGB')
-# low_image = low_image.resize((256, 256))
 print('load image')
 
 # gen
 up_image = pipe(prompt="a photo of an astronaut riding a horse on mars",
                 image=low_image,
-                num_inference_steps=20,
+                num_inference_steps=50,
                 guidance_scale=5,
-                noise_level=20).images[0]
+                noise_level=50).images[0]
 print('upscale done!')
 
 # output
