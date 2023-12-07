@@ -1,6 +1,6 @@
 import os
 import torch
-from diffusers import StableDiffusionPipeline
+from diffusers import StableDiffusionUpscalePipeline
 from PIL import Image
 from einops import rearrange
 import torchvision
@@ -8,7 +8,7 @@ import torchvision
 print('start')
 
 # load model and scheduler
-pipe = StableDiffusionPipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
+pipe = StableDiffusionUpscalePipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
 pipe = pipe.to("cuda")
 pipe.enable_attention_slicing()
 print('load model')
