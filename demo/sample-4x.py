@@ -12,7 +12,7 @@ print('load model')
 
 # load image
 input_path = "../results/demo/1.png"
-low_res_img = Image.open(input_path)
+low_res_img = Image.open(input_path).convert("RGB")
 print('load image')
 
 # gen
