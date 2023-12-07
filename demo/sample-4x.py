@@ -19,11 +19,16 @@ low_image3 = Image.open('../results/demo/3.png').convert('RGB')
 print('load image')
 
 # gen
-up_images = pipe(prompt="a photo of an astronaut riding a horse on mars",
-                image=[low_image1, low_image2, low_image3],
-                num_inference_steps=50,
-                guidance_scale=5,
-                noise_level=50).images
+up_images = pipe(
+  prompt=[
+    'a photo of an astronaut riding a horse on mars',
+    'a photo of an astronaut riding a horse on mars',
+    'a photo of an astronaut riding a horse on mars',
+  ],
+  image=[low_image1, low_image2, low_image3],
+  num_inference_steps=50,
+  guidance_scale=5,
+  noise_level=50).images
 print('upscale done!')
 
 # output
