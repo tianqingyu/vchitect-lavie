@@ -20,7 +20,7 @@ low_images = [low_image1, low_image2, low_image3]
 print('load image')
 
 # gen
-for i, img in low_images:
+for i, img in enumerate(low_images):
   up_image = pipe(
     prompt='a photo of an astronaut riding a horse on mars',
     image=img,
