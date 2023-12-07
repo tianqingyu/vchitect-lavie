@@ -15,7 +15,7 @@ print('load model')
 
 # gen
 prompt = "a photo of an astronaut riding a horse on mars"
-up_image = pipe(prompt=prompt, class_labels=None).images[0]
+up_image = pipe(prompt=prompt, class_labels=[]).images[0]
 print('upscale done!')
 
 # output
