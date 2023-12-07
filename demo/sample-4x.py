@@ -13,12 +13,12 @@ pipe = pipe.to("cuda").enable_attention_slicing()
 print('load model')
 
 # load image
-# input_path = "../results/demo/1.png"
-# low_res_img = Image.open(input_path).convert("RGB")
-url = "https://huggingface.co/datasets/hf-internal-testing/diffusers-images/resolve/main/sd2-upscale/low_res_cat.png"
-response = requests.get(url)
-low_res_img = Image.open(BytesIO(response.content)).convert("RGB")
-low_res_img = low_res_img.resize((128, 128))
+input_path = "../results/demo/1.png"
+low_res_img = Image.open(input_path).convert("RGB")
+# url = "https://huggingface.co/datasets/hf-internal-testing/diffusers-images/resolve/main/sd2-upscale/low_res_cat.png"
+# response = requests.get(url)
+# low_res_img = Image.open(BytesIO(response.content)).convert("RGB")
+# low_res_img = low_res_img.resize((128, 128))
 print('load image')
 
 # gen
