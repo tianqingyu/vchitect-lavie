@@ -16,23 +16,21 @@ print('load model')
 low_image1 = Image.open('../results/demo/1.png').convert('RGB')
 low_image2 = Image.open('../results/demo/2.png').convert('RGB')
 low_image3 = Image.open('../results/demo/3.png').convert('RGB')
+low_images = [low_image1, low_image2, low_image3]
 print('load image')
 
 # gen
-up_images = pipe(
-  prompt=[
-    'a photo of an astronaut riding a horse on mars',
-    'a photo of an astronaut riding a horse on mars',
-    'a photo of an astronaut riding a horse on mars',
-  ],
-  image=[low_image1, low_image2, low_image3],
-  num_inference_steps=50,
-  guidance_scale=5,
-  noise_level=50).images
-print('upscale done!')
+for i, img in low_images:
+  up_image = pipe(
+    prompt='a photo of an astronaut riding a horse on mars',
+    image=img,
+    num_inference_steps=50,
+    guidance_scale=5,
+    noise_level=50
+  ).images[0]
+  print('upscale done! img = ', i)
 
-# output
-for i, img in up_images:
+  # output
   output_path = f'../results/demo/{i}-4x.png'
   os.makedirs(os.path.dirname(output_path), exist_ok=True)
   img.save(output_path)
