@@ -34,7 +34,7 @@ class FrozenCLIPEmbedder(AbstractEncoder):
     def __init__(self, sd_path, device="cuda", max_length=77):
         super().__init__()
         self.tokenizer = CLIPTokenizer.from_pretrained(sd_path, subfolder="tokenizer", use_fast=False)
-        self.transformer = CLIPTextModel.from_pretrained(sd_path, subfolder="text_encoder")
+        self.transformer = CLIPTextModel.from_pretrained(sd_path, subfolder="text_encoder", torch_dtype=torch.float16)
         self.device = device
         self.max_length = max_length
         self.freeze()
