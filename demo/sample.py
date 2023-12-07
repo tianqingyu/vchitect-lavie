@@ -3,7 +3,7 @@ from diffusers import StableDiffusionPipeline
 from PIL import Image
 import os
 
-pipe = StableDiffusionPipeline.from_pretrained("../pretrained_models/stable-diffusion-v1-4", use_auth_token=True)
+pipe = StableDiffusionPipeline.from_pretrained("../pretrained_models/stable-diffusion-v1-4", torch_dtype=torch.float16)
 pipe = pipe.to("cuda")
 
 prompt = "a photo of an astronaut riding a horse on mars"
