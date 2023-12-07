@@ -53,6 +53,7 @@ def main(args):
 	pipeline.scheduler = DDIMScheduler.from_config(config)
 
 	pipeline = pipeline.to("cuda")
+	pipeline.enable_attention_slicing()
 	pipeline.set_use_memory_efficient_attention_xformers(True)
 
 	# ---------------------- load user's prompt ----------------------
