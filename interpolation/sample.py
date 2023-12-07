@@ -231,7 +231,7 @@ def main(args):
 			model.eval()  # important!
 			diffusion = create_diffusion(str(args.num_sampling_steps))
 			vae = AutoencoderKL.from_pretrained(sd_path, subfolder="vae", torch_dtype=torch.float16).to(device)
-			text_encoder = TextEmbedder(sd_path, torch_dtype=torch.float16).to(device)
+			text_encoder = TextEmbedder(sd_path).to(device)
 
 			video_list = os.listdir(args.input_folder)
 			args.input_path_list = [os.path.join(args.input_folder, video) for video in video_list]
