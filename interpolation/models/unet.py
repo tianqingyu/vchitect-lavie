@@ -455,19 +455,22 @@ class UNet3DConditionModel(ModelMixin, ConfigMixin):
                         t, 
                         encoder_hidden_states = None,
                         class_labels: Optional[torch.Tensor] = None,
-                        cfg_scale=4.0):
+                        cfg_scale=4.0,
+                        use_fp16=False):
         """
         Forward, but also batches the unconditional forward pass for classifier-free guidance.
         """
         # https://github.com/openai/glide-text2im/blob/main/notebooks/text2im.ipynb
         half = x[: len(x) // 2]
         combined = torch.cat([half, half], dim=0)
+        if use_fp16:
+            combined = combined.to(dtype=torch.float16)
         model_out = self.forward(combined, t, encoder_hidden_states, class_labels).sample
         # For exact reproducibility reasons, we apply classifier-free guidance on only
         # three channels by default. The standard approach to cfg applies it to all channels.
         # This can be done by uncommenting the following line and commenting-out the line following that.
-        # eps, rest = model_out[:, :4], model_out[:, 4:]
-        eps, rest = model_out[:, :4], model_out[:, 4:] # b c f h w
+        eps, rest = model_out[:, :4], model_out[:, 4:]
+        # eps, rest = model_out[:, :3], model_out[:, 3:] # b c f h w
         cond_eps, uncond_eps = torch.split(eps, len(eps) // 2, dim=0)
         half_eps = uncond_eps + cfg_scale * (cond_eps - uncond_eps)
         eps = torch.cat([half_eps, half_eps], dim=0)

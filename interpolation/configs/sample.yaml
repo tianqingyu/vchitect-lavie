@@ -9,6 +9,10 @@ args:
   fps_list:
     - 24
   
+  # model speedup
+  use_compile: False
+  use_fp16: True
+
   # model config: 
   model: TSR
   num_frames: 61
@@ -22,7 +26,6 @@ args:
   seed: 0
   cfg_scale: 4.0
   run_time: 12
-  use_compile: False
   enable_xformers_memory_efficient_attention: True
   num_sample: 1
 
