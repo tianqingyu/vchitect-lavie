@@ -10,8 +10,8 @@ def upscale_image(img, idx, pipe, gpu_id):
     
     # 将模型移动到指定的 GPU
     pipe = pipe.to(device)
-    pipe.enable_attention_slicing()
-    pipe.set_use_memory_efficient_attention_xformers(True)
+    # pipe.enable_attention_slicing()
+    # pipe.set_use_memory_efficient_attention_xformers(True)
 
     # 处理图像
     with torch.cuda.device(gpu_id):
