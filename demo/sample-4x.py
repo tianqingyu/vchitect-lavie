@@ -39,7 +39,7 @@ def main():
     print('load model')
 
     # 加载图像
-    low_images = [Image.open(f'../results/demo/{i}.png').convert('RGB') for i in range(1, 1)]
+    low_images = [Image.open(f'../results/demo/1.png').convert('RGB')]
     print('load image')
 
     # 使用 ThreadPoolExecutor 进行并行处理
