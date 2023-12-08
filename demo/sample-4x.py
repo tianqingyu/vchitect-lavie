@@ -2,36 +2,43 @@ import os
 import torch
 from diffusers import StableDiffusionUpscalePipeline
 from PIL import Image
+import concurrent.futures
 
-print('start')
+def upscale_image(img, idx, pipe):
+    print(f'Start processing image {idx}')
+    up_image = pipe(
+        prompt='a photo of an astronaut riding a horse on mars',
+        image=img,
+        num_inference_steps=50,
+        guidance_scale=5,
+        noise_level=50
+    ).images[0]
+    print(f'Upscale done! img = {idx}')
 
-# load model and scheduler
-pipe = StableDiffusionUpscalePipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
-pipe = pipe.to("cuda")
-pipe.enable_attention_slicing()
-pipe.set_use_memory_efficient_attention_xformers(True)
-print('load model')
+    # output
+    output_path = f'../results/demo/{idx}-4x.png'
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    up_image.save(output_path)
+    print(f"Image saved to {output_path}")
 
-# load image
-low_image1 = Image.open('../results/demo/1.png').convert('RGB')
-low_image2 = Image.open('../results/demo/2.png').convert('RGB')
-low_image3 = Image.open('../results/demo/3.png').convert('RGB')
-low_images = [low_image1, low_image2, low_image3]
-print('load image')
+def main():
+    print('start')
 
-# gen
-for i, img in enumerate(low_images):
-  up_image = pipe(
-    prompt='a photo of an astronaut riding a horse on mars',
-    image=img,
-    num_inference_steps=50,
-    guidance_scale=5,
-    noise_level=50
-  ).images[0]
-  print('upscale done! img = ', i)
+    # load model and scheduler
+    pipe = StableDiffusionUpscalePipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
+    pipe = pipe.to("cuda")
+    pipe.enable_attention_slicing()
+    pipe.set_use_memory_efficient_attention_xformers(True)
+    print('load model')
 
-  # output
-  output_path = f'../results/demo/{i}-4x.png'
-  os.makedirs(os.path.dirname(output_path), exist_ok=True)
-  img.save(output_path)
-  print(f"Image saved to {output_path}")
+    # load image
+    low_images = [Image.open(f'../results/demo/{i}.png').convert('RGB') for i in range(1, 4)]
+    print('load image')
+
+    # Use ThreadPoolExecutor for parallel processing
+    with concurrent.futures.ThreadPoolExecutor(max_workers=torch.cuda.device_count()) as executor:
+        futures = [executor.submit(upscale_image, img, i, pipe) for i, img in enumerate(low_images)]
+        concurrent.futures.wait(futures)
+
+if __name__ == "__main__":
+    main()
