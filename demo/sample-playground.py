@@ -11,7 +11,7 @@ pipe = DiffusionPipeline.from_pretrained(
 )
 pipe.to("cuda")
 
-prompt = "a photo of an astronaut riding a horse on mars"
+prompt = "A group of friends exploring a winding path in an enchanted forest filled with the sweet scent of wildflowers and birdsong, with a magical surprise awaiting around the next bend as sunlight filters through the leaves."
 image  = pipe(prompt=prompt, guidance_scale=3.0).images[0]
 
 # save image
