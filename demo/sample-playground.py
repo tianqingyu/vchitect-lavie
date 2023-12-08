@@ -11,7 +11,7 @@ pipe = DiffusionPipeline.from_pretrained(
 )
 pipe.to("cuda")
 
-prompt = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
+prompt = "a photo of an astronaut riding a horse on mars"
 image  = pipe(prompt=prompt, guidance_scale=3.0).images[0]
 
 # save image
