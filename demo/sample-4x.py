@@ -13,7 +13,8 @@ def upscale_image(img, idx, gpu_id):
     pipe = StableDiffusionUpscalePipeline.from_pretrained("../pretrained_models/stable-diffusion-x4-upscaler", torch_dtype=torch.float16)
     pipe = pipe.to(device)
     pipe.enable_attention_slicing()
-    pipe.set_use_memory_efficient_attention_xformers(True)
+    # pipe.set_use_memory_efficient_attention_xformers(True)
+    pipe.enable_xformers_memory_efficient_attention()
     print('load model')
 
     # 处理图像
