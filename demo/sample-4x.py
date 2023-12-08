@@ -10,8 +10,8 @@ def upscale_image(img, idx, pipe, gpu_id):
     
     # 将模型移动到指定的 GPU
     pipe = pipe.to(device)
-    # pipe.enable_attention_slicing()
-    # pipe.set_use_memory_efficient_attention_xformers(True)
+    pipe.enable_attention_slicing()
+    pipe.set_use_memory_efficient_attention_xformers(True)
 
     # 处理图像
     with torch.cuda.device(gpu_id):
@@ -23,13 +23,13 @@ def upscale_image(img, idx, pipe, gpu_id):
             noise_level=50
         ).images[0]
 
-    print(f'Upscale done! img = {idx}')
+        print(f'Upscale done! img = {idx}')
 
-    # 输出路径
-    output_path = f'../results/demo/{idx}-4x.png'
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    up_image.save(output_path)
-    print(f"Image saved to {output_path}")
+        # 输出路径
+        output_path = f'../results/demo/{idx}-4x.png'
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        up_image.save(output_path)
+        print(f"Image saved to {output_path}")
 
 def main():
     print('start')
