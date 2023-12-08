@@ -3,7 +3,7 @@ import torch
 from diffusers import DiffusionPipeline
 
 pipe = DiffusionPipeline.from_pretrained(
-    "../pretrained_models/playground-v2-1024px-aesthetic",
+    "playgroundai/playground-v2-1024px-aesthetic",
     torch_dtype=torch.float16,
     use_safetensors=True,
     add_watermarker=False,
