@@ -15,9 +15,9 @@ def upscale_image(img, idx, gpu_id):
     
     # 模型优化（减少GPU内存、推理加速等）
     pipe.enable_attention_slicing()
-    # pipe.set_use_memory_efficient_attention_xformers(True)
     pipe.enable_vae_slicing()
     pipe.enable_xformers_memory_efficient_attention()
+    # pipe.set_use_memory_efficient_attention_xformers(True)
     print('load model')
 
     # 处理图像
